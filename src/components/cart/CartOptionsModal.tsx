@@ -1,7 +1,6 @@
 import { useAddToCart } from "@/hooks/Cart/useAddToCart";
 import { Cart } from "@/interfaces/Cart";
 import { Product } from "@/interfaces/Product";
-import { useCustomer } from "@/providers/CustomerProvider";
 import { showSuccessToast } from "@/utils/showToast";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
