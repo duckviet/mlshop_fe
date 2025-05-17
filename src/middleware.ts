@@ -8,7 +8,6 @@ export async function middleware(request: NextRequest) {
     req: request,
     secret: process.env.NEXTAUTH_SECRET,
   });
-
   if (token) {
     // If a token exists, continue with the request
     return NextResponse.next();

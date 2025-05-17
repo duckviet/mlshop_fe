@@ -28,9 +28,9 @@ const cartAction = {
       throw error;
     }
   },
-  async create(data: any) {
+  async addCart(data: any) {
     try {
-      const res = await client.post(cartEndpoint.create, data);
+      const res = await client.post(cartEndpoint["post-add-cart"], data);
       return res.data;
     } catch (error) {
       throw error;

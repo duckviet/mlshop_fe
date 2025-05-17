@@ -3,19 +3,15 @@ import { useAddToCart } from "@/hooks/Cart/useAddToCart";
 // Removed unused Cart interface import
 import { cn } from "@/lib/utils";
 import { showSuccessToast, showErrorToast } from "@/utils/showToast"; // Import showErrorToast
+import { useSession } from "next-auth/react";
 import React, { useState, useEffect } from "react";
 // Removed unused useSession import
+import { Product } from "@/interfaces/Product";
 
 interface ProductVariant {
   size?: string[];
   color?: string[];
   material?: string[];
-}
-
-interface Product {
-  _id: string;
-  variants?: ProductVariant; // Make variants optional
-  // Add other product properties you might need here
 }
 
 interface OptionBarProps {
@@ -25,6 +21,7 @@ interface OptionBarProps {
 const OptionBar: React.FC<OptionBarProps> = ({ product }) => {
   // Removed useSession as suggested by the user's original logic (add to cart happens without session check here)
   // If add to cart requires session, you'll need to add the check back in useAddToCart hook or here.
+  const { data: session } = useSession();
 
   const initialOptionState = {
     size: "",
@@ -118,7 +115,12 @@ const OptionBar: React.FC<OptionBarProps> = ({ product }) => {
     // The current useAddToCart only takes productId and quantity.
     // You'll need to update your useAddToCart hook and backend API to handle variants.
     // For now, we'll just proceed with the existing hook structure.
-    await addToCart(product._id, option.quantity);
+    await addToCart({
+      customerId: session?.user.id,
+      productId: product._id,
+      ...option,
+      price: product.price,
+    });
     showSuccessToast("Product added to cart");
     // Reset options after adding to cart if needed, or keep them selected
     // setOption(initialOptionState);

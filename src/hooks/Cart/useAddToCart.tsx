@@ -3,19 +3,14 @@ import { post } from "@/utils/apiRequest";
 import { cartEndpoint } from "@/services/axios/endpoints/cart.endpoint";
 import { useCartDispatch } from "@/providers/CartProvider";
 import { showErrorToast } from "@/utils/showToast";
+import cartAction from "@/services/axios/actions/cart.action";
 
 export const useAddToCart = () => {
   const dispatch = useCartDispatch();
 
-  const addToCart = async (productId: string, quantity: number) => {
-    const url = `${process.env.NEXT_PUBLIC_SERVER}${cartEndpoint.create}`;
-
+  const addToCart = async (data: any) => {
     try {
-      const response = await post<any>(url, {
-        productId,
-        quantity,
-      });
-
+      const response = await cartAction.addCart(data);
       if (dispatch) {
         dispatch({
           type: "ADDTO_CART",
