@@ -22,7 +22,7 @@ export default class ClientRequest {
 
   constructor() {
     this.axiosInstance = axios.create({
-      baseURL: ENV.NEXT_PUBLIC_BACKEND_URL,
+      baseURL: ENV.NEXT_PUBLIC_SERVER,
       timeout: 30000,
     });
 
