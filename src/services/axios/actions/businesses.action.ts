@@ -1,23 +1,18 @@
 import { client } from "..";
 import { businessesEndpoint } from "../endpoints/businesses.endpoint";
+import mockBusinesses from "@/mock_data/businesses.json";
 
 const businessesAction = {
   async getAll() {
-    try {
-      const res = await client.get(businessesEndpoint["get-all"]);
-      return res.data;
-    } catch (error) {
-      throw error;
-    }
+    // Using mock data instead of API call
+    return mockBusinesses.businesses;
   },
+
   async getById(id: string) {
-    try {
-      const res = await client.get(businessesEndpoint["get-by-id"](id));
-      return res.data;
-    } catch (error) {
-      throw error;
-    }
-  },
+    // Using mock data instead of API call
+    const business = mockBusinesses.businesses.find(b => b._id === id);
+    return business;
+  }
 };
 
 export default businessesAction;

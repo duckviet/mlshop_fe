@@ -1,0 +1,24 @@
+{
+  "reviews": [
+    {
+      "_id": "review1",
+      "reviewsableId": "1",
+      "reviewsableType": "Product",
+      "customerId": "customer1",
+      "rating": 5,
+      "content": "Excellent sound quality and very comfortable to wear!",
+      "createdAt": "2024-01-15T00:00:00.000Z",
+      "updatedAt": "2024-01-15T00:00:00.000Z"
+    },
+    {
+      "_id": "review2",
+      "reviewsableId": "1",
+      "reviewsableType": "Product", 
+      "customerId": "customer2",
+      "rating": 4,
+      "content": "Great headphones, but battery life could be better",
+      "createdAt": "2024-01-16T00:00:00.000Z",
+      "updatedAt": "2024-01-16T00:00:00.000Z"
+    }
+  ]
+}

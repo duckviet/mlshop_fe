@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "_id": "1",
+      "name": "Premium Wireless Headphones",
+      "description": "High-quality wireless headphones with noise cancellation and premium sound quality",
+      "price": 299.99,
+      "category": "Electronics",
+      "stock": 50,
+      "image": [
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
+        "https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8aGVhZHBob25lc3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
+        "https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhlYWRwaG9uZXN8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
+      ],
+      "variants": {
+        "color": ["Black", "White", "Blue"],
+        "size": ["One Size"],
+        "material": ["Plastic", "Metal"]
+      },
+      "businessesId": "business1",
+      "createAt": "2024-01-01T00:00:00.000Z",
+      "updateAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "_id": "2",
+      "name": "Classic Leather Watch",
+      "description": "Elegant leather watch with analog display and water resistance",
+      "price": 199.99,
+      "category": "Accessories",
+      "stock": 30,
+      "image": [
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+      ],
+      "variants": {
+        "color": ["Brown", "Black"],
+        "size": ["Small", "Medium", "Large"],
+        "material": ["Genuine Leather", "Synthetic Leather"]
+      },
+      "businessesId": "business2",
+      "createAt": "2024-01-02T00:00:00.000Z",
+      "updateAt": "2024-01-02T00:00:00.000Z"
+    }
+  ]
+}

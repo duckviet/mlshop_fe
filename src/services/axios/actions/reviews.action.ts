@@ -1,47 +1,45 @@
 import { client } from "..";
 import { reviewsEndpoint } from "../endpoints/reviews.endpoint";
+import mockReviews from "@/mock_data/reviews.json";
 
 const reviewsAction = {
   async getAll() {
-    try {
-      const res = await client.get(reviewsEndpoint["get-all"]);
-      return res.data;
-    } catch (error) {
-      throw error;
-    }
+    // Using mock data instead of API call
+    return mockReviews.reviews;
   },
+
   async getById(id: string) {
-    try {
-      const res = await client.get(reviewsEndpoint["get-by-id"](id));
-      return res.data;
-    } catch (error) {
-      throw error;
-    }
+    // Using mock data instead of API call
+    const review = mockReviews.reviews.find(r => r._id === id);
+    return review;
   },
+
   async postReview(data: any) {
-    try {
-      const res = await client.post(reviewsEndpoint["post-reviews"], data);
-      return res.data;
-    } catch (error) {
-      throw error;
-    }
+    // Simulate posting a review
+    const newReview = {
+      _id: `review${mockReviews.reviews.length + 1}`,
+      ...data,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+    mockReviews.reviews.push(newReview);
+    return newReview;
   },
+
   async deleteReview(id: string) {
-    try {
-      const res = await client.delete(reviewsEndpoint["del-reviews"](id));
-      return res.data;
-    } catch (error) {
-      throw error;
+    // Simulate deleting a review
+    const index = mockReviews.reviews.findIndex(r => r._id === id);
+    if (index !== -1) {
+      mockReviews.reviews.splice(index, 1);
     }
+    return { success: true };
   },
+
   async getByProductId(id: string) {
-    try {
-      const res = await client.get(reviewsEndpoint["get-by-product-id"](id));
-      return res.data;
-    } catch (error) {
-      throw error;
-    }
-  },
+    // Using mock data instead of API call
+    const reviews = mockReviews.reviews.filter(r => r.reviewsableId === id);
+    return reviews;
+  }
 };
 
 export default reviewsAction;
