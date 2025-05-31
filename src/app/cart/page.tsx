@@ -3,7 +3,7 @@ import CartItemList from "@/components/cart/CartItemList";
 import { useSession } from "next-auth/react";
 import React, { Suspense } from "react";
 
-const page = () => {
+const Page = () => {
   const { data: session } = useSession();
   if (!session) return <>Loading...</>;
   return (
@@ -16,4 +16,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -1,4 +1,4 @@
-import { User } from "node-telegram-bot-api";
+import { User } from "next-auth";
 import { OrderItem } from "./OrderItem";
 
 export interface Order {

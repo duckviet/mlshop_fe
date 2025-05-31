@@ -1,7 +1,6 @@
-import ProductDetail from "@/app/product/_components/ProductDetail";
+import ProductDetail from "../_components/ProductDetail";
 import businessesAction from "@/services/axios/actions/businesses.action";
 import productAction from "@/services/axios/actions/product.endpoint";
-import { productEndpoint } from "@/services/axios/endpoints/product.endpoint";
 import { notFound } from "next/navigation";
 
 async function getProduct(id: string) {
@@ -22,7 +21,8 @@ async function getBusiness(businessId: string) {
   return res;
 }
 
-const page = async ({ params }: { params: { id: string } }) => {
+const page = async (props: { params: Promise<{ id: string }> }) => {
+  const params = await props.params;
   const product = await getProduct(params.id);
   const business = await getBusiness(product.businessesId);
 
