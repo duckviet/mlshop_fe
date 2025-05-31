@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { showErrorToast, showSuccessToast } from "@/utils/showToast";
 import { post } from "@/utils/apiRequest";
-import { authenticationEndpoint } from "@/constants/endpoints";
+import authenticationAction from "@/services/axios/actions/authentication.action";
 
 interface SignUpFormData {
   email: string;
@@ -42,10 +42,11 @@ const SignUpForm = () => {
     setIsLoading(true);
 
     try {
-      const response = await post<any>(
-        `${authenticationEndpoint}/signup`,
-        form
+      const response = await authenticationAction.login(
+        form.email,
+        form.password
       );
+
       if (response.data) {
         showSuccessToast("Account created successfully!");
         router.push("/login");

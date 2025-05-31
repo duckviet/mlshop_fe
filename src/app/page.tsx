@@ -9,14 +9,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 async function getProducts() {
-  const res = await productAction.getAll();
-  if (!res) {
-    throw new Error("Failed to fetch products");
+  try {
+    const res = await productAction.getAll();
+    return res;
+  } catch (error) {
+    console.error("getProducts failed:", error);
+    // trả về mảng rỗng hoặc bất cứ fallback nào
+    return [];
   }
-
-  return res;
 }
-
 export default async function Home() {
   const initialProducts = await getProducts();
 

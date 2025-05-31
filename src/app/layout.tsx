@@ -10,8 +10,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "@/components/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
+  metadataBase: new URL("http://localhost:3000"),
   title: "Shopz - Your One-Stop Shop",
   description: "Find everything you need at Shopz",
   openGraph: {
@@ -26,6 +26,12 @@ export const metadata: Metadata = {
       },
     ],
     siteName: "My Website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@eMartiiin94",
+    title: "Title webtsite",
+    description: "this is the desciption",
   },
 };
 
