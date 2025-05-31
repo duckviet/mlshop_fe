@@ -2,8 +2,6 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { get } from "@/utils/apiRequest";
-import { authenticationEndpoint } from "@/constants/endpoints";
 import customerAction from "@/services/axios/actions/customer.action";
 
 interface CustomerContextType {
