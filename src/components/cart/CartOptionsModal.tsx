@@ -4,6 +4,7 @@ import { Product } from "@/interfaces/Product";
 import { showSuccessToast } from "@/utils/showToast";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
+import { EVENT_TYPES, trackEvent } from "@/utils/eventTracking";
 
 interface CartOptionsModalProps {
   product: Product;
@@ -34,8 +35,11 @@ const CartOptionsModal: React.FC<CartOptionsModalProps> = ({
       ...option,
       price: product.price,
     } as Cart);
+    trackEvent(product._id, EVENT_TYPES.ADD_TO_CART);
+
     showSuccessToast("Add to cart succesful");
     setOption(initialOption);
+    setModal(false);
   };
 
   return (

@@ -178,7 +178,7 @@ const FilterBar = () => {
               name="minRange"
               type="range"
               min={0}
-              max={1000}
+              max={10000}
               value={searchQuery.priceRange.minPrice}
               onChange={handleRangeChange}
               className="range range-sm"
@@ -187,16 +187,15 @@ const FilterBar = () => {
               name="maxRange"
               type="range"
               min={0}
-              max={1000}
+              max={10000}
               value={searchQuery.priceRange.maxPrice}
               onChange={handleRangeChange}
               className="range range-sm mt-1"
             />
             <div className="flex w-full justify-between px-2 text-xs">
               <span>$0</span>
-              <span>${searchQuery.priceRange.minPrice}</span>
-              <span>${searchQuery.priceRange.maxPrice}</span>
-              <span>$1000</span>
+              <span>$5000</span>
+              <span>$10000</span>
             </div>
           </div>
         </div>

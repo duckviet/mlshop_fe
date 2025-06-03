@@ -24,6 +24,7 @@ const CartItem: React.FC<{ cart: Cart }> = ({ cart }) => {
     showSuccessToast("Remove succsessful");
   };
 
+  const handleCheckOut = () => {};
   const [checkoutModal, setCheckOutModal] = useState<boolean>(false);
   return (
     <div

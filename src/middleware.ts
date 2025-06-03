@@ -1,22 +1,40 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getToken } from "next-auth/jwt";
 
-export async function middleware(request: NextRequest) {
-  // Retrieve the token from the request
-  const token = await getToken({
-    req: request,
-    secret: process.env.NEXTAUTH_SECRET,
-  });
-  if (token) {
-    // If a token exists, continue with the request
-    return NextResponse.next();
+export function middleware(request: NextRequest) {
+  // Get the session ID from cookies
+  let sessionId = request.cookies.get("session_id")?.value;
+
+  // If no session ID exists, create a new one
+  if (!sessionId) {
+    sessionId = Date.now().toString();
   }
 
-  // If no token exists, redirect to the homepage or another route
-  return NextResponse.redirect(new URL("/", request.url));
+  // Create response
+  const response = NextResponse.next();
+
+  // Set the session ID cookie
+  response.cookies.set({
+    name: "session_id",
+    value: sessionId,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+  });
+
+  return response;
 }
 
 export const config = {
-  matcher: ["/profile", "/cart", "/wishlist"], // The routes you want to protect with this middleware
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+  ],
 };
