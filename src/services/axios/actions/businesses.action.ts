@@ -15,6 +15,7 @@ const businessesAction = {
       const res = await client.get(businessesEndpoint["get-by-id"](id));
       return res.data;
     } catch (error) {
+      console.log(error);
       throw error;
     }
   },

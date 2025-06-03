@@ -67,7 +67,7 @@ const BusinessProfile = ({ information, productCount }: any) => {
         </div>
         <div className="text-center">
           <div className="text-3xl font-bold text-gray-800">
-            {new Date(information?.createAt).getFullYear()}
+            {new Date(information?.createAt).getFullYear().toString()}
           </div>
           <div className="text-gray-500 mt-1">Est.</div>
         </div>

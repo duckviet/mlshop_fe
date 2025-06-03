@@ -27,8 +27,12 @@ const ItemCard = ({ product, viewMode = "grid" }: ItemCardProps) => {
   const [modal, setModal] = useState<boolean>(false);
 
   const handleAddToCart = () => {
-    if (session) setModal(!modal);
-    else showErrorToast("You must login first to add to cart");
+    if (session) {
+      setModal(!modal);
+      // Track add to cart event
+    } else {
+      showErrorToast("You must login first to add to cart");
+    }
   };
 
   const handleToggleWishList = async (id: string) => {
@@ -62,9 +66,8 @@ const ItemCard = ({ product, viewMode = "grid" }: ItemCardProps) => {
         <div className="relative w-48 h-48 flex-shrink-0">
           <Image
             src={
-              // product.image[0] 
+              // product.image[0]
               "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-
             }
             alt={product.name}
             fill
@@ -124,7 +127,7 @@ const ItemCard = ({ product, viewMode = "grid" }: ItemCardProps) => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow group relative ">
+    <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow group relative h-full">
       <div className="relative">
         <Link href={`/product/${product._id}`}>
           <div className="relative h-48">

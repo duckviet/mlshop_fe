@@ -1,3 +1,4 @@
+import axios from "axios";
 import { client } from "..";
 import { productEndpoint } from "../endpoints/product.endpoint";
 
@@ -31,7 +32,9 @@ const productAction = {
   },
   async getByPagination(page: number, limit: number) {
     try {
-      const res = await client.get(productEndpoint["get-by-pagination"](page, limit));
+      const res = await client.get(
+        productEndpoint["get-by-pagination"](page, limit)
+      );
       return res.data;
     } catch (error) {
       throw error;
@@ -48,7 +51,18 @@ const productAction = {
   async getByCategory(category: string) {
     try {
       const res = await client.get(
-        `${productEndpoint["get-by-businesses-id"]}?category=${category}`
+        `${productEndpoint["get-by-category"]}?category=${category}`
+      );
+      return res.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  async getRecommend(data: any) {
+    try {
+      const res = await axios.post(
+        `http://192.168.28.39:8000/recommendations`,
+        data
       );
       return res.data;
     } catch (error) {
